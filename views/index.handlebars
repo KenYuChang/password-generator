@@ -1,0 +1,135 @@
+<!--  ./views/index.handlebars -->
+<div class="container py-5">
+
+  <div class="row">
+    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Random Password Generator
+            <i class="fas fa-key"></i></h5>
+          <hr />
+          <form method="POST" action="/">
+            <div class="row mb-3 g-2">
+              <label for="length" class="col-md-4 col-form-label">
+                Password Length
+              </label>
+              <div class="col-md-8">
+                <input
+                  type="number"
+                  name="length"
+                  class="form-control"
+                  id="length"
+                  min="4"
+                  max="16"
+                  value="{{options.length}}"
+                />
+                <small class="text-muted form-text">Length is available between
+                  4 ~ 16</small>
+              </div>
+            </div>
+
+            <div class="row mb-2 g-2 align-items-center">
+              <label for="lowercase" class="col-md-4 col-form-label">Include
+                Lowercase Characters</label>
+              <div class="col-md-8">
+                <div class="form-check form-check-inline">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="lowercase"
+                    name="lowercase"
+                    {{#if options.lowercase}}checked{{/if}}
+                  />
+                  <label class="form-check-label" for="lowercase">(e.g. abcdefg)</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-2 g-2 align-items-center">
+              <label for="uppercase" class="col-md-4 col-form-label">Include
+                Uppercase Characters</label>
+              <div class="col-md-8">
+                <div class="form-check form-check-inline">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="uppercase"
+                    name="uppercase"
+                    {{#if options.uppercase}}checked{{/if}}
+                  />
+                  <label class="form-check-label" for="uppercase">(e.g. ABCDEFG)</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-2 g-2 align-items-center">
+              <label for="numbers" class="col-md-4 col-form-label">Include
+                Numbers</label>
+              <div class="col-md-8">
+                <div class="form-check form-check-inline">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="numbers"
+                    name="numbers"
+                    {{#if options.numbers}}checked{{/if}}
+                  />
+                  <label class="form-check-label" for="numbers">(e.g. 123456)</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-2 g-2 align-items-center">
+              <label for="symbols" class="col-md-4 col-form-label">Include
+                Symbols</label>
+              <div class="col-md-8">
+                <div class="form-check form-check-inline">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="symbols"
+                    name="symbols"
+                    {{#if options.symbols}}checked{{/if}}
+                  />
+                  <label
+                    class="form-check-label"
+                    for="symbols"
+                  >(e.g.@#$%)</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-2 mb-3">
+              <label for="exclude-characters" class="col-md-4 col-form-label">
+                Exclude Characters
+              </label>
+              <div class="col-md-8">
+                <input
+                  type="text"
+                  name="excludeCharacters"
+                  class="form-control"
+                  id="exclude-characters"
+                  value="{{options.excludeCharacters}}"
+                />
+                <small class="text-muted form-text">These characters will not
+                  appear in the password</small>
+              </div>
+            </div>
+            {{#if password}}
+              <div class="alert alert-info" role="alert">
+                <span class="mr-2">Your password is:</span>
+                <code>{{password}}</code>
+              </div>
+            {{/if}}
+
+            <button class="btn btn-success" type="submit">Generate Password</button>
+          </form>
+        </div>
+
+        <small class="card-footer text-muted text-end">
+          Idea is inspired by Strong Random Password
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
